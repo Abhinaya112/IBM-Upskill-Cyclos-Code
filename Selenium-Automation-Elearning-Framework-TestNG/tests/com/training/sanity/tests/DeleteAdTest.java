@@ -1,9 +1,13 @@
+// This test case to remove an Advertisement
 package com.training.sanity.tests;
+
+import static org.testng.Assert.assertEquals;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -50,17 +54,27 @@ public class DeleteAdTest {
 	}
 	
 	@Test 
-	public void validLoginTest() throws InterruptedException {
-		loginPOM.sendUserName("manzoor");
-		loginPOM.sendPassword("manzoor");
-		loginPOM.clickLoginBtn(); 
+	public void deleteAdTest() throws InterruptedException {
+		//Login to the Application
+		deleteAdPOM.sendUserName("manzoor");
+		deleteAdPOM.sendPassword("manzoor");
+		deleteAdPOM.clickLoginBtn(); 
 		screenShot.captureScreenShot("1_deleteAd");
+		//Click on personal link
 		deleteAdPOM.clickpersonal();
+		// Click on the Ad that needs to be deleted
 		deleteAdPOM.clickad();
 		deleteAdPOM.deleteAd();
+		// Confirm deletion
 		deleteAdPOM.confirmdelete();
 		screenShot.captureScreenShot("2_deleteAd");
-		deleteAdPOM.success();
+		// verify that the Ad is removed successfully
+		Thread.sleep(5000);
+		Alert alert= driver.switchTo().alert();
+		String actual1=alert.getText();
+		String expected1="Advertisement removed";
+		assertEquals(actual1, expected1);
+		alert.accept();
 		screenShot.captureScreenShot("3_deleteAd");
 		
 

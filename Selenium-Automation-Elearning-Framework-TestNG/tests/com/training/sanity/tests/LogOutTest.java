@@ -1,3 +1,5 @@
+// This is to check if the admin is able to logout of the application successfully.
+
 package com.training.sanity.tests;
 
 import org.testng.annotations.Test;
@@ -57,11 +59,14 @@ public class LogOutTest {
 	
 	@Test 
 	public void validLogOutTest() {
-		loginPOM.sendUserName("admin");
-		loginPOM.sendPassword("12345");
-		loginPOM.clickLoginBtn(); 
+		// Login to the application as Admin
+		logOutPOM.sendUserName("admin");
+		logOutPOM.sendPassword("12345");
+		logOutPOM.clickLoginBtn(); 
 		screenShot.captureScreenShot("1_logout");
+		// click on Logout
 		logOutPOM.logout();
+		// click on ok on the alert box to confirm logout
 		logOutPOM.alerts();
 		screenShot.captureScreenShot("2_logout");
 		

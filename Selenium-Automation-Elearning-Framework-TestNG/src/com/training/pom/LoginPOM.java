@@ -12,6 +12,7 @@ public class LoginPOM {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
+	 // Login to the application
 	
 	@FindBy(id="cyclosUsername")
 	private WebElement userName; 
@@ -31,6 +32,7 @@ public class LoginPOM {
 		this.password.clear(); 
 		this.password.sendKeys(password); 
 	}
+	
 	
 	public void clickLoginBtn() {
 		this.loginBtn.click(); 

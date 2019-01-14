@@ -1,10 +1,14 @@
+// This is a test case enabling the Admin to successfully search for a member and reset the password
+
 package com.training.sanity.tests;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -45,23 +49,33 @@ public class MemberLoginTest {
 		driver.quit();
 	}
 	@Test
-	public void validLoginTest() throws InterruptedException {
+	public void memberLoginTest() throws InterruptedException {
+		// Login as Admin
 		memberloginPOM.sendUserName("admin");
 		memberloginPOM.sendPassword("12345");
 		memberloginPOM.clickLoginBtn(); 
 		screenShot.captureScreenShot("1_memberlogin");
+		//Search for the member named Selenium
 		memberloginPOM.sendmemberUserName("Sele");
+		// click on manage password
 		memberloginPOM.clickmanagepwd();
+		// Send new password
 		memberloginPOM.sendNewPassword("Selenium1");
 		memberloginPOM.sendNewPassword1("Selenium1");
 		screenShot.captureScreenShot("2_memberlogin");
+		// Click on force change checkbox
 		memberloginPOM.clickforceChange();
+		// click on reset button
 		memberloginPOM.clickreset();
 		memberloginPOM.handleAlert();
 		screenShot.captureScreenShot("3_memberlogin");
 		Thread.sleep(5000);
 		screenShot.captureScreenShot("4_memberlogin");
-		memberloginPOM.okmessage();
+		// verify if the password has been reset by the admin
+		Alert alert=driver.switchTo().alert();
+		String actual1=alert.getText();
+		String expected1="The password was reset and sent to member";
+		Assert.assertEquals(actual1, expected1);
 				
 	}
 }

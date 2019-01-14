@@ -17,42 +17,61 @@ private WebDriver driver;
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
+// Login to the Application
+	@FindBy(id="cyclosUsername")
+	private WebElement userName; 
 	
+	@FindBy(id="cyclosPassword")
+	private WebElement password;
 	
+	@FindBy(xpath="//input[@value='Submit']")
+	private WebElement loginBtn; 
+	
+	public void sendUserName(String userName) {
+		this.userName.clear();
+		this.userName.sendKeys(userName);
+	}
+	
+	public void sendPassword(String password) {
+		this.password.clear(); 
+		this.password.sendKeys(password); 
+	}
+	
+	public void clickLoginBtn() {
+		this.loginBtn.click(); 
+	}
+	
+	// Locate personal link
 	@FindBy(id="menu1")
 	private WebElement personal; 
 	
+	// Locate Advertisement link
 	@FindBy(id="submenu1.2")
 	private WebElement advertisements; 
 	
-	//@FindBy(id="//table/tbody/tr[2]/td[6]/img[2]")
+	// Locate ad to be deleted
 	@FindBy(xpath="//tr[2]/td[6]/img[@src='/web/pages/images/delete.gif']")
 	private WebElement deleteAd; 
 	
-	
+	// click on personal link
 	public void clickpersonal() {
 		this.personal.click(); 
 	}
+	// click on ad
 	public void clickad() {
 		this.advertisements.click(); 
 	}
-	
+	// click on delete Ad icon
 	public void deleteAd() {
 		
 		this.deleteAd.click(); 
 	}
 	
+	// confirm delete
 	public void confirmdelete(){
 		Alert alert= driver.switchTo().alert();
 		alert.accept();
 	}
-		public void success() throws InterruptedException{
-			Thread.sleep(5000);
-			Alert alert= driver.switchTo().alert();
-			String actual1=alert.getText();
-			String expected1="Advertisement removed";
-			assertEquals(actual1, expected1);
-			alert.accept();
-		}
+		
 	
 }

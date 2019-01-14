@@ -1,3 +1,9 @@
+
+
+
+// This is a test case to verify the error message displayed when the new password and confirm new password are different
+
+
 package com.training.sanity.tests;
 
 import org.testng.annotations.Test;
@@ -17,6 +23,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -56,19 +63,32 @@ public class PasswordTest {
 	
 	@Test 
 	public void validpasswordTest() {
-		loginPOM.sendUserName("manzoor");
-		loginPOM.sendPassword("manzoor");
-		loginPOM.clickLoginBtn(); 
+		// login to the application as admin
+		passwordPOM.sendUserName("admin");      
+		passwordPOM.sendPassword("12345");      
+		passwordPOM.clickLoginBtn();              
 		screenShot.captureScreenShot("1_passwordTest");
-		passwordPOM.clickpersonal();
-		passwordPOM.clickchangePassword();
-		passwordPOM.sendcurrentPassword("manzoor");
-		passwordPOM.sendnewPassword("new1");
-		passwordPOM.sendnewPassword1("new123");
-		screenShot.captureScreenShot("2_passwordTest");
-		passwordPOM.clicksubmit();
+		// Click on the personal Link
+		passwordPOM.clickpersonal();    
+		// Click on change password
+		passwordPOM.clickchangePassword();   
+		// Enter current password
+		passwordPOM.sendcurrentPassword("12345");
+		// Enter different values for new password and confirm new password
+		passwordPOM.sendnewPassword("1234");      
+		passwordPOM.sendnewPassword1("1234567"); 
+		screenShot.captureScreenShot("2_passwordTest"); 
+		// Click on submit button
+		passwordPOM.clicksubmit();               
 		screenShot.captureScreenShot("3_passwordTest");
-		passwordPOM.verifyPassword();
+		// Verify the alert message displayed
+		Alert alert=driver.switchTo().alert();
+		String expected1="Passwords are not Equal";
+		String actual1=alert.getText().replace("\n","");
+		alert.accept();
+		Assert.assertEquals(actual1, expected1);
+	
+		
 		
 		
 	}

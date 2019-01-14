@@ -8,7 +8,7 @@
           <include name="setUpBeforeClass"/>
           <include name="setUp"/>
           <include name="tearDown"/>
-          <include name="validLoginTest"/>
+          <include name="deleteAdTest"/>
         </methods>
       </class> <!-- com.training.sanity.tests.DeleteAdTest -->
     </classes>
