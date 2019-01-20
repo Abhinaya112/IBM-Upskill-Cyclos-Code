@@ -3,14 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.training.sanity.tests.DeleteAdTest">
+      <class name="com.training.sanity.tests.AlertSettingsTest">
         <methods>
           <include name="setUpBeforeClass"/>
           <include name="setUp"/>
+          <include name="AlertSettingTest"/>
           <include name="tearDown"/>
-          <include name="deleteAdTest"/>
         </methods>
-      </class> <!-- com.training.sanity.tests.DeleteAdTest -->
+      </class> <!-- com.training.sanity.tests.AlertSettingsTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
