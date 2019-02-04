@@ -3,14 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.training.sanity.tests.AlertSettingsTest">
+      <class name="com.training.sanity.tests.DBAdminPayment">
         <methods>
-          <include name="setUpBeforeClass"/>
           <include name="setUp"/>
-          <include name="AlertSettingTest"/>
+          <include name="setUpBeforeClass"/>
           <include name="tearDown"/>
+          <include name="memberPayment"/>
         </methods>
-      </class> <!-- com.training.sanity.tests.AlertSettingsTest -->
+      </class> <!-- com.training.sanity.tests.DBAdminPayment -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

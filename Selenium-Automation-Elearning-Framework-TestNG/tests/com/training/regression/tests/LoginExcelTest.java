@@ -35,7 +35,7 @@ public class LoginExcelTest {
 
 	@BeforeMethod
 	public void setUp() throws Exception {
-		driver = DriverFactory.getDriver(DriverNames.CHROME);
+		driver = DriverFactory.getDriver(DriverNames.FIREFOX);
 		loginPOM = new LoginPOM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);

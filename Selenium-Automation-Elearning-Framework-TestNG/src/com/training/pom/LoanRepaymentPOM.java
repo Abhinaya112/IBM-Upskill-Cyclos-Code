@@ -130,7 +130,7 @@ public class LoanRepaymentPOM {
 	// Click on first loan
 
 	// @FindBy(xpath="//tbody/tr[2]/td/table/tbody/tr[9]/td[4]/img")
-	@FindBy(xpath = "//tbody/tr[2]/td/table/tbody/tr[2]/td[4]/img")
+	@FindBy(xpath = "//table/tbody/tr[2]/td[4]/img")
 	private WebElement firstloan;
 
 	@FindBy(linkText = "8")
